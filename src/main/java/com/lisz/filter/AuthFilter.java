@@ -25,7 +25,7 @@ public class AuthFilter implements Filter {
 			System.out.println("没有带Token，所以还没登录，直接返回，不让访问");
 			return;
 		}
-		// Token 解析不出来就会报错
+		// Token 解析不出来就会报错。解析出来之后可以查看体信息得到在登录的时候就下发的角色和权限，再看看被访问的URL是不是被授权了
 		String parseToken = JwtUtil.parseToken(token);
 		if (!StringUtils.hasText(parseToken)){
 			System.out.println("Token不正确，返回");
